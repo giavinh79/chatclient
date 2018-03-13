@@ -1,0 +1,88 @@
+<HTML>
+        <head>
+          <title>Chat Client</title>
+          <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+          <link href='https://fonts.googleapis.com/css?family=Michroma' rel='stylesheet'>
+          <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,700,900" rel="stylesheet">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          
+          <!-- Bootstrap -->
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+          <link rel="stylesheet" href="style.css">
+
+          <script type="text/javascript">
+            function validateForm()
+            {
+              return true;
+            }
+          </script>
+        </head>
+        
+        <body>
+          <!-- <img src="images/flames2.png" alt="picture of flames" style="display: none; left: 280px; padding:0; margin:0; width: 50px; height: 70px; position: absolute;"/> -->
+          <div class="header">
+              <a href="index.html"><h1><span class="infernotext"> Chat </span> Client</h1></a>
+              <form class="form-inline" style="padding-top: 1em;" action="127.0.0.1:8080/database" method="post">
+                <div class="form-group">
+                  <label for="user">Username:</label>
+                  <input type="text" class="form-control" id="user" name="user" disabled>
+                </div>
+                <div class="form-group">
+                  <label for="pwd">Password:</label>
+                  <input type="password" class="form-control" id="pwd" name="pwd" disabled>
+                </div>
+                <button type="submit" class="btn btn-default">Login</button>
+              </form>
+          </div>
+
+                          
+                <!-- <div class="checkbox">
+                  <label><input type="checkbox"> Remember me</label>
+                </div> -->
+
+          
+          <h2>Sign Up</h2>
+
+          <div class="menu"></div>
+          <div class="menuReal">
+            <i class="fa fa-users" style="font-size:36px; padding-bottom: 0.5em;"></i>
+           <form id="signupForm" action="loggedin.html">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input id="username" type="text" class="form-control" name="username" placeholder="Username" disabled>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input id="password" type="password" class="form-control" name="password" placeholder="Password" disabled>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input id="password" type="password" class="form-control" name="passwordTwo" placeholder="Confirm Password" disabled>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Signup</button>
+            </form>
+          </div>
+<!-- 
+          <form action="/loggedin.html">
+            <div class="form-group">
+              <label for="email">Email address:</label>
+              <input type="email" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+              <label for="pwd">Password:</label>
+              <input type="password" class="form-control" id="pwd">
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox"> Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form> -->
+          <div class="footer">
+            <p>&copy 2018 Giavinh Lam</p>
+          </div>
+        </body>
+        </HTML>
+        

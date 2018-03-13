@@ -1,0 +1,66 @@
+* { 
+    margin: 0; padding: 0; box-sizing: border-box; 
+}
+
+body { 
+    font: 13px Helvetica, Arial;
+    height: 100%;
+    width: 100%;
+}
+
+form { 
+    background: #000; position: fixed; bottom: 0; width: 100%; 
+}
+
+.header {
+    height: 10vh;
+    width: 100%; 
+    background-color: rgb(26, 170, 115);
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    display: grid;
+    font-size: 2.5em;
+    color: WHITE;
+    margin: auto;
+    padding-left: 0.25em;
+    line-height: 10vh;
+    vertical-align:middle;
+}
+
+form input { 
+    border: 1px solid black; width: 90%;
+    padding: 10px 8px 10px 8px;
+}
+
+form button { 
+    font-weight: bold;
+    width: 10%; background: rgb(112, 182, 139); border: 1px solid black;
+    padding: 10px 10px 10px 10px;
+}
+
+form button:hover {
+    background: rgb(26, 170, 115);
+    cursor: pointer;
+}
+
+#messages { 
+    list-style-type: none; margin: 0; padding: 0; 
+}
+
+#messages li { 
+    padding: 5px 10px; 
+}
+
+/* #messages li:nth-child(odd) {
+    background: #eee;
+} */
+
+#clientCount {
+    padding: 5px 10px;
+    background: #eee;
+}
