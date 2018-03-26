@@ -2,13 +2,13 @@ var app = require('express')(); //dependencies/modules needed
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 // const PORT = process.env.PORT || 3000; //necessary for Heroku deployment?
-const path = require('path');
-const INDEX = path.join(__dirname, 'generic.html');
+// const path = require('path');
+// const INDEX = path.join(__dirname, 'generic.html');
 var clientCount = 0;
 
 app.get('/', function(req, res) {
-  //res.sendFile(__dirname + '/index.html');
-  res.sendFile(INDEX);
+  res.sendFile(__dirname + '/index.html');
+  // res.sendFile(INDEX);
 });
 
 app.get('/favicon.ico', function(req, res) {
