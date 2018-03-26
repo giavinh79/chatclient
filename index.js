@@ -1,10 +1,14 @@
- var app = require('express')();
+const PORT = process.env.PORT || 3000; //necessary for Heroku deployment?
+const INDEX = path.join(__dirname, 'index.html');
+
+var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var clientCount = 0;
 
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
+  //res.sendFile(__dirname + '/index.html');
+  res.sendFile(INDEX);
 });
 
 // const bodyParser = require('body-parser');
@@ -34,8 +38,8 @@ io.on('connection', function(socket){
     });
 });
 
-http.listen(8080, function(){
-  console.log('listening on localhost:8080');
+http.listen(3000, function(){
+  console.log('listening on localhost:3000');
 });
 
 // const express = require('express');
