@@ -23,8 +23,8 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname + '/generic.html');
 });
 
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
+// const bodyParser = require('body-parser');
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.post('/database', function(req, res) {
 //   console.log('rip');
