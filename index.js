@@ -1,27 +1,11 @@
+//  var app = require('express')();
+// var http = require('http').Server(app);
+// var io = require('socket.io')(http);
+// var clientCount = 0;
 
-/*
-var app = require('express')();
-var http = require('http').Server(app);
-
-app.get('/', function(req, res){ //request, response
-  //res.send('<h1>Hello world</h1>');
-  res.sendFile(__dirname + '/index.html');
-});
-
-http.listen(3000, function(){
-  console.log('listening on *:3000');
-});
-*/
-
-//with socket.io library
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var clientCount = 0;
-
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/generic.html');
-});
+// app.get('/', function(req, res) {
+//   res.sendFile(__dirname + '/generic.html');
+// });
 
 // const bodyParser = require('body-parser');
 // app.use(bodyParser.urlencoded({ extended: true }));
@@ -35,31 +19,41 @@ app.get('/', function(req, res) {
 //   //res.send
 // });
 
-io.on('connection', function(socket){
-  //console.log('a user connected');
-  /*
-  */
-    //console.log('a user connected');
-    // socket.broadcast.emit('New user has connected');
-    clientCount++;
-    // io.emit('client update', "clientCount");
-    io.emit('client update', clientCount);
-    socket.emit('anonymous name', clientCount);
+// io.on('connection', function(socket){
+//     clientCount++;
+//     io.emit('client update', clientCount);
+//     socket.emit('anonymous name', clientCount);
 
-    socket.on('disconnect', function(){
-        //console.log('user disconnected');
-        clientCount--;
-        io.emit('client update', clientCount);
-        // io.emit('client update', clientCount);
-    });
+//     socket.on('disconnect', function(){
+//         clientCount--;
+//         io.emit('client update', clientCount);
+//     });
 
-    socket.on('chat message', function(msg){
-       // console.log('message: ' + msg);
-       //io.emit('some event', { for: 'everyone' });
-       io.emit('chat message', msg); //for everyone
-    });
+//     socket.on('chat message', function(msg){
+//        io.emit('chat message', msg); //for everyone
+//     });
+// });
+
+// http.listen(8080, function(){
+//   console.log('listening on localhost:8080');
+// });
+
+const express = require('express');
+const socketIO = require('socket.io');
+const path = require('path');
+
+const PORT = process.env.PORT || 3000;
+const INDEX = path.join(__dirname, 'generic.html');
+
+const server = express()
+  .use((req, res) => res.sendFile(INDEX) )
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+const io = socketIO(server);
+
+io.on('connection', (socket) => {
+  console.log('Client connected');
+  socket.on('disconnect', () => console.log('Client disconnected'));
 });
 
-http.listen(8080, function(){
-  console.log('listening on localhost:8080');
-});
+setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
