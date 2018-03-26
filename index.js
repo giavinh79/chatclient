@@ -19,9 +19,9 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var clientCount = 0;
 
-// app.get('/', function(req, res) {
-//   res.sendFile(__dirname + '/index.html');
-// });
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '/generic.html');
+});
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
