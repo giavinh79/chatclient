@@ -1,9 +1,9 @@
 var app = require('express')(); //dependencies/modules needed
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-const PORT = process.env.PORT || 3000; //necessary for Heroku deployment?
+// const PORT = process.env.PORT || 3000; //necessary for Heroku deployment?
 const path = require('path');
-const INDEX = path.join(__dirname, 'index.html');
+const INDEX = path.join(__dirname, 'generic.html');
 var clientCount = 0;
 
 app.get('/', function(req, res) {
