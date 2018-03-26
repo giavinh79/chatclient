@@ -1,6 +1,7 @@
 <HTML>
         <head>
           <title>Chat Client</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
           <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
           <link href='https://fonts.googleapis.com/css?family=Michroma' rel='stylesheet'>
           <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,700,900" rel="stylesheet">
@@ -13,7 +14,9 @@
 
           <link rel="stylesheet" href="style.css">
           <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
           <script type="text/javascript">
+
             function validateForm()
             {
               return true;
@@ -23,6 +26,7 @@
         
         <body>
           <!-- <img src="images/flames2.png" alt="picture of flames" style="display: none; left: 280px; padding:0; margin:0; width: 50px; height: 70px; position: absolute;"/> -->
+          <!-- autocomplete -->
           <div class="header">
               <a href="index.html"><h1><span class="infernotext"> Chat </span> Client</h1></a>
               <form class="form-inline" style="padding-top: 1em;" action="127.0.0.1:8080/database" method="post">
@@ -60,7 +64,7 @@
               </div>
               <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                <input id="password" type="password" class="form-control" name="passwordTwo" placeholder="Confirm Password" disabled>
+                <input id="passwordConfirm" type="password" class="form-control" name="passwordTwo" placeholder="Confirm Password" disabled>
               </div>
               <button type="submit" class="btn btn-primary btn-block">Signup</button>
             </form>
