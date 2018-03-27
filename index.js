@@ -8,16 +8,22 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 var clientCount = 0;
 
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
-  // res.sendFile(INDEX);
-});
+// app.get('/', function(req, res) {
+//   res.sendFile(__dirname + '/index.html');
+//   // res.sendFile(INDEX);
+// });
 
-
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app
-  .use((req, res) => res.sendFile(__dirname + "/index.html") )
+  // .get((req, res) => res.sendFile(__dirname + "/index.html"))
+  .get('/', function(req, res) {
+       res.sendFile(__dirname + '/index.html');
+    //   // res.sendFile(INDEX);
+    })
+  .get('/style.css', function(req, res) {
+       res.sendFile(__dirname + "/style.css");
+     })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 // app.get('/backgroundWhite.jpg', function(req, res) {
@@ -92,8 +98,8 @@ app
 //     });
 // });
 
-// http.listen(3000, function(){
-//   console.log('listening on localhost:3000');
+// http.listen(8080, function(){
+//   console.log('listening on localhost:8080');
 // });
 
 // const express = require('express');
