@@ -64,3 +64,13 @@ form button:hover {
     padding: 5px 10px;
     background: #eee;
 }
+
+@media screen and (max-height: 700px) {
+    form input {
+        width: 80%;
+    }
+
+    form button {
+        width: 20%;
+    }
+}

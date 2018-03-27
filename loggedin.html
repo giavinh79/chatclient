@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Socket.IO chat</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script>var loaded = 1;</script> <!-- originally had loggedin.html standalone (not on server) -->
     <!-- <script src="http://localhost:8080/socket.io/socket.io.js" onload="loaded=1"></script> -->
     <script src="/socket.io/socket.io.js"></script>
@@ -96,7 +96,7 @@
           if (loaded == 0)
           {
             alert("Connection failed, the server may not be running. Please try again.");
-            window.location.href = "/index.html";
+            window.location.href = "/"; //or index.html
           }
         }
         checkConnection();
@@ -106,13 +106,13 @@
   </head>
   <body>
     <div class="header">
-      <a href="index.html"><h1>Chat Client</h1></a>
+      <a href="/"><h1>Chat Client</h1></a>
 
     </div>
     <ul id="clientCount"></ul>
     <ul id="messages"></ul>
     <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
+      <input id="m" autocomplete="off" required/><button>Send</button>
     </form>
   </body>
 </html>

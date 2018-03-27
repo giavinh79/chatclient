@@ -137,6 +137,14 @@ h2 {
   }
 }
 
+.form-group label {
+  font-size: 0.9em;
+}
+
+.form-group input {
+  width: 20vw;
+}
+
 @media only screen and (max-height: 340px) {
   .menu, .menuReal, .footer {
     display: none;
