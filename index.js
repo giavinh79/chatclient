@@ -98,7 +98,7 @@ const INDEX = path.join(__dirname, 'generic.html');
 
 const server = express()
   .use((req, res) => res.sendFile(__dirname + "/generic.html") )
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+  .listen(3000, () => console.log('Listening on 3000'));
 
 const io = socketIO(server);
 
