@@ -23,8 +23,8 @@ app
       res.sendFile(__dirname + '/index.html');
     //   // res.sendFile(INDEX);
   })
-  .get('/backgroundWhite.jpg', function(req, res) {
-      res.sendFile(__dirname + "/backgroundWhite.jpg");
+  .get('/backgroundWhite-compressed.jpg', function(req, res) {
+      res.sendFile(__dirname + "/backgroundWhite-compressed.jpg");
   })
   .get('/style.css', function(req, res) {
       res.sendFile(__dirname + "/style.css");
