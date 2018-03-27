@@ -27,6 +27,15 @@ app
   })
   .get('/style.css', function(req, res) {
       res.sendFile(__dirname + "/style.css");
+  })
+  .get('/loggedin.html', function(req, res) {
+    res.sendFile(__dirname + "/loggedin.html");
+  })
+  .get('/loginstyle.css', function(req, res) {
+    res.sendFile(__dirname + "/loginstyle.css");
+  })
+  .get('/favicon.ico', function(req, res) {
+    res.sendFile(__dirname + "/favicon.ico");
   });
   //.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
