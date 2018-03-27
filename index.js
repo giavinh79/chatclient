@@ -13,23 +13,22 @@ var clientCount = 0;
 //   // res.sendFile(INDEX);
 // });
 
-const PORT = process.env.PORT || 8080; //process.env.PORT convention for Heroku -> if nothing in environ. var then port is 8080
+const PORT = process.env.PORT || 8080; 
+//process.env.PORT: convention for Heroku -> if nothing in environ. var then port is 8080
 
 app
   // .get((req, res) => res.sendFile(__dirname + "/index.html"))
   .get('/', function(req, res) {
-       res.sendFile(__dirname + '/index.html');
+      res.sendFile(__dirname + '/index.html');
     //   // res.sendFile(INDEX);
-    })
+  })
+  .get('/backgroundWhite.jpg', function(req, res) {
+      res.sendFile(__dirname + "/backgroundWhite.jpg");
+  })
   .get('/style.css', function(req, res) {
-       res.sendFile(__dirname + "/style.css");
-     })
-     ;
+      res.sendFile(__dirname + "/style.css");
+  });
   //.listen(PORT, () => console.log(`Listening on ${ PORT }`));
-
-http.listen(PORT, function(){
-  console.log('listening on localhost:8080');
-});
 
 // app.get('/backgroundWhite.jpg', function(req, res) {
 //   res.sendFile(__dirname + "/backgroundWhite.jpg");
@@ -88,24 +87,28 @@ http.listen(PORT, function(){
 //   //res.send
 // });
 
-// io.on('connection', function(socket){
-//     clientCount++;
-//     io.emit('client update', clientCount);
-//     socket.emit('anonymous name', clientCount);
+io.on('connection', function(socket){
+    clientCount++;
+    io.emit('client update', clientCount);
+    socket.emit('anonymous name', clientCount);
 
-//     socket.on('disconnect', function(){
-//         clientCount--;
-//         io.emit('client update', clientCount);
-//     });
+    socket.on('disconnect', function(){
+        clientCount--;
+        io.emit('client update', clientCount);
+    });
 
-//     socket.on('chat message', function(msg){
-//        io.emit('chat message', msg); //for everyone
-//     });
-// });
+    socket.on('chat message', function(msg){
+       io.emit('chat message', msg); //for everyone
+    });
+});
 
 // http.listen(8080, function(){
 //   console.log('listening on localhost:8080');
 // });
+
+http.listen(PORT, function(){
+  console.log('listening on localhost:8080');
+});
 
 // const express = require('express');
 // const socketIO = require('socket.io');
