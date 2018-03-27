@@ -13,13 +13,20 @@ app.get('/', function(req, res) {
   // res.sendFile(INDEX);
 });
 
-app.get('/backgroundWhite.jpg', function(req, res) {
-  res.sendFile(__dirname + "/backgroundWhite.jpg");
-});
 
-app.get('/style.css', function(req, res) {
-  res.sendFile(__dirname + "/style.css");
-});
+const PORT = process.env.PORT || 3000;
+
+app
+  .use((req, res) => res.sendFile(__dirname + "/index.html") )
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+// app.get('/backgroundWhite.jpg', function(req, res) {
+//   res.sendFile(__dirname + "/backgroundWhite.jpg");
+// });
+
+// app.get('/style.css', function(req, res) {
+//   res.sendFile(__dirname + "/style.css");
+// });
 
 // .listen(8080, () => console.log(`Listening on localhost:8080`));
 
@@ -85,9 +92,9 @@ app.get('/style.css', function(req, res) {
 //     });
 // });
 
-http.listen(3000, function(){
-  console.log('listening on localhost:3000');
-});
+// http.listen(3000, function(){
+//   console.log('listening on localhost:3000');
+// });
 
 // const express = require('express');
 // const socketIO = require('socket.io');
