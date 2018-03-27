@@ -13,7 +13,7 @@ var clientCount = 0;
 //   // res.sendFile(INDEX);
 // });
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080; //process.env.PORT convention for Heroku -> if nothing in environ. var then port is 8080
 
 app
   // .get((req, res) => res.sendFile(__dirname + "/index.html"))
@@ -24,7 +24,12 @@ app
   .get('/style.css', function(req, res) {
        res.sendFile(__dirname + "/style.css");
      })
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+     ;
+  //.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+http.listen(PORT, function(){
+  console.log('listening on localhost:8080');
+});
 
 // app.get('/backgroundWhite.jpg', function(req, res) {
 //   res.sendFile(__dirname + "/backgroundWhite.jpg");
