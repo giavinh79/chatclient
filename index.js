@@ -3,10 +3,10 @@
 // var io = require('socket.io')(http);
 // var clientCount = 0;
 
-// const app = require('express')(); //dependencies/modules needed
-// const http = require('http').Server(app);
-// const io = require('socket.io')(http);
-// var clientCount = 0;
+const app = require('express')(); //dependencies/modules needed
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+var clientCount = 0;
 
 // app.get('/', function(req, res) {
 //   res.sendFile(__dirname + '/index.html');
@@ -97,8 +97,8 @@ const path = require('path');
 // const INDEX = path.join(__dirname, 'generic.html');
 
 const server = express()
-  .use((req, res) => res.sendFile(__dirname + "/generic.html") )
-  .listen(3000, () => console.log(`Listening on 3000`));
+  .use((req, res) => res.sendFile(INDEX) )
+  .listen(PORT, () => console.log(`Listening on 3000`));
 
 const io = socketIO(server);
 
