@@ -5,7 +5,8 @@
 
 const app = require('express')(); //dependencies and modules
 const http = require('http').Server(app);
-const io = require('socket.io')(http);
+// const io = require('socket.io')(http);
+const io = require('socket.io')(http, { wsEngine: 'ws' });
 var clientCount = 0;
 
 // app.get('/', function(req, res) {
