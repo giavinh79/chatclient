@@ -8,23 +8,31 @@
 // const io = require('socket.io')(http);
 // var clientCount = 0;
 
-
 // app.get('/', function(req, res) {
-//   res.sendFile(__dirname + '/generic.html');
+//   res.sendFile(__dirname + '/index.html');
 //   // res.sendFile(INDEX);
 // });
 
+// app.get('/backgroundWhite.jpg', function(req, res) {
+//   res.sendFile(__dirname + "/backgroundWhite.jpg");
+// });
 
-const express = require('express');
-const socketIO = require('socket.io');
-const path = require('path');
+// app.get('/style.css', function(req, res) {
+//   res.sendFile(__dirname + "/style.css");
+// });
 
-const PORT = process.env.PORT || 3000;
-const INDEX = path.join(__dirname, 'index.html');
+// .listen(8080, () => console.log(`Listening on localhost:8080`));
 
-const server = express()
-  .use((req, res) => res.sendFile(INDEX))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+// const express = require('express');
+// const socketIO = require('socket.io');
+// const path = require('path');
+
+// const PORT = process.env.PORT || 3000;
+// const INDEX = path.join(__dirname, 'index.html');
+
+// const server = express()
+//   .use((req, res) => res.sendFile(INDEX))
+//   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 // app.get('/favicon.ico', function(req, res) {
 //   res.sendFile(__dirname + "/" + "favicon.ico");
@@ -77,26 +85,26 @@ const server = express()
 //     });
 // });
 
-// http.listen(8080, function(){
-//   console.log('listening on localhost:8080');
+// http.listen(3000, function(){
+//   console.log('listening on localhost:3000');
 // });
 
-// const express = require('express');
-// const socketIO = require('socket.io');
-// const path = require('path');
+const express = require('express');
+const socketIO = require('socket.io');
+const path = require('path');
 
 // const PORT = process.env.PORT || 3000;
 // const INDEX = path.join(__dirname, 'generic.html');
 
-// const server = express()
-//   .use((req, res) => res.sendFile(INDEX) )
-//   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+const server = express()
+  .use((req, res) => res.sendFile(__dirname + "/generic.html") )
+  .listen(3000, () => console.log(`Listening on 3000`));
 
-// const io = socketIO(server);
+const io = socketIO(server);
 
-// io.on('connection', (socket) => {
-//   console.log('Client connected');
-//   socket.on('disconnect', () => console.log('Client disconnected'));
-// });
+io.on('connection', (socket) => {
+  console.log('Client connected');
+  socket.on('disconnect', () => console.log('Client disconnected'));
+});
 
-// setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
+setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
