@@ -16,75 +16,82 @@
           <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
           <script type="text/javascript">
-
             function validateForm()
             {
               return true;
+            }
+
+            function checkPass()
+            {
+              var form = document.getElementById("password");
+              var formConfirm = document.getElementById("passwordConfirm");
+              if (form.value == formConfirm.value)
+              {
+                formConfirm.style.backgroundColor = "rgba(154, 237, 161, 0.8)";
+              }
+              else
+              {
+                formConfirm.style.backgroundColor = "rgba(242, 135, 135, 0.5)";
+              }
+            }
+
+            function validateForm()
+            {
+              var form = document.getElementById("password");
+              var formConfirm = document.getElementById("passwordConfirm");
+              if (form.value != formConfirm.value)
+              {
+                var warning = document.getElementById("warning");
+                warning.style.display = "block";
+                $("#warning").delay(1000).fadeOut(1500);
+                return false;
+              }
             }
           </script>
         </head>
         
         <body>
-          <!-- <img src="images/flames2.png" alt="picture of flames" style="display: none; left: 280px; padding:0; margin:0; width: 50px; height: 70px; position: absolute;"/> -->
-          <!-- autocomplete -->
           <div class="header">
               <a href="index.html"><h1><span class="infernotext"> Chat </span> Client</h1></a>
-              <!-- action="127.0.0.1:8080/database" method="post"-->
-              <form class="form-inline" style="padding-top: 1em;" action="loggedin.html" method="get">
+              <form class="form-inline" style="padding-top: 1em;" action="database" method="post">
                 <div class="form-group">
                   <label for="user">Username:</label>
-                  <input type="text" class="form-control" id="user" name="user" disabled>
+                  <input type="text" class="form-control" id="user" name="user" required>
                 </div>
                 <div class="form-group">
                   <label for="pwd">Password:</label>
-                  <input type="password" class="form-control" id="pwd" name="pwd" disabled>
+                  <input type="password" class="form-control" id="pwd" name="pwd" required>
                 </div>
                 <button type="submit" class="btn btn-default">Login</button>
               </form>
           </div>
 
-                          
-                <!-- <div class="checkbox">
-                  <label><input type="checkbox"> Remember me</label>
-                </div> -->
+          <div id="warning" class="alert alert-warning" style="position: absolute; width: 100%; bottom: 20; z-index: 100; display: none;">
+            <strong>Passwords do not match!</strong> Please try again.
+          </div>
 
-          
           <h2>Sign Up</h2>
-
+        
           <div class="menu"></div>
           <div class="menuReal">
             <i class="fa fa-users" style="font-size:36px; padding-bottom: 0.5em;"></i>
-           <form id="signupForm" action="loggedin.html">
+           <form id="signupForm" onsubmit="return validateForm()"action="loggedin.html">
               <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input id="username" type="text" class="form-control" name="username" placeholder="Username" disabled>
+                <input id="username" type="text" class="form-control" name="username" placeholder="Username" required>
               </div>
               <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                <input id="password" type="password" class="form-control" name="password" placeholder="Password" disabled>
+                <input id="password" type="password" class="form-control" name="password" placeholder="Password" onkeyup="checkPass()" required>
               </div>
               <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                <input id="passwordConfirm" type="password" class="form-control" name="passwordTwo" placeholder="Confirm Password" disabled>
+                <input id="passwordConfirm" type="password" class="form-control" name="passwordTwo" placeholder="Confirm Password" onkeyup="checkPass()" required>
               </div>
               <button type="submit" class="btn btn-primary btn-block">Signup</button>
             </form>
           </div>
-<!-- 
-          <form action="/loggedin.html">
-            <div class="form-group">
-              <label for="email">Email address:</label>
-              <input type="email" class="form-control" id="email">
-            </div>
-            <div class="form-group">
-              <label for="pwd">Password:</label>
-              <input type="password" class="form-control" id="pwd">
-            </div>
-            <div class="checkbox">
-              <label><input type="checkbox"> Remember me</label>
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form> -->
+
           <div class="footer">
             <p>&copy 2018 Giavinh Lam</p>
           </div>
