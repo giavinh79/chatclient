@@ -4,10 +4,11 @@
     "description": "chat client",
     "scripts": {
         "start": "node index.js"
-      },
+    },
     "dependencies": {
         "express": "4.16.3",
         "mongodb": "^3.0.3",
+        "mustache": "^2.3.0",
         "socket.io": "2.0.4"
     }
 }

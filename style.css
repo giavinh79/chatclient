@@ -33,7 +33,7 @@ h1 {
 
 h2 {
   text-align: center;
-  margin: 0.7em 0em 0.5em 0.25em;
+  margin: 0.5em 0em 0.5em 0.3em;
   color: rgb(86, 86, 255);
   font-size: 5em;
   font-family: 'Montserrat';
@@ -66,7 +66,7 @@ h2 {
   padding: 20px;
   top: 50%;
   left: 50%;
-  margin: -100px 0 0 -140px; 
+  margin: -105px 0 0 -140px; 
   position: absolute;
 }
 
@@ -91,6 +91,24 @@ h2 {
   padding-bottom: 10px;
 }
 
+.anonymous {
+  display: flex;
+  position: absolute;
+  height: 50px;
+  bottom: 30;
+  right: 30;
+  background-color: rgb(244, 244, 244);
+  padding: 0 15px 0 15px;
+  border-radius: 10px;
+}
+
+.anonymous p {
+  display: inline-block;
+  font-size: 20px;
+  line-height: 50px;
+  vertical-align: middle;
+}
+
 @media only screen and (max-width: 850px) {
   h1 {
     margin-top: 1.6em;
@@ -99,6 +117,36 @@ h2 {
     position: absolute;
     z-index: 2;
   }
+
+  .menu {
+    margin: -100px 0 0 -150px;
+  }
+
+  .menuReal {
+    margin: -100px 0 0 -150px;
+  }
+
+  h2 {
+    margin-top: 1em;
+    margin-left: 0em;
+    font-size: 4em;
+  }
+
+  .anonymous {
+    right: initial;
+    bottom: 50;
+    z-index: 10;
+    left: 50%;
+    margin: 0 0 0 -120px; 
+    position: absolute;
+  }
+
+  /* height: 250px;
+  padding: 20px;
+  top: 50%;
+  left: 50%;
+  margin: -105px 0 0 -140px; 
+  position: absolute; */
 
   .form-inline div {
     display: inline-block;

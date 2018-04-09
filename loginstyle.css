@@ -32,6 +32,12 @@ h1 {
     vertical-align:middle;
 }
 
+.anonymous i {
+    position: absolute;
+    padding-left: 200px;
+    bottom: 10;
+}
+
 form input { 
     border: 1px solid black; width: 90%;
     padding: 10px 8px 10px 8px;

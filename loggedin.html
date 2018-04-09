@@ -9,33 +9,23 @@
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       var user, pass, anonName = 0;
-      // if (loaded == 1)
-      // {
-        var socket = io.connect('http://localhost:8080');
+      var socket = io.connect('http://localhost:8080');
         // var socket = io.connect('https://obscure-harbor-66476.herokuapp.com');
-      // }
           
         $(function () {
-          /*
-            var socket = io();
             $('form').submit(function(){
-            socket.emit('chat message', $('#m').val());
-            $('#m').val('');
-            return false;
-            });
-            socket.on('chat message', function(msg){
-            $('#messages').append($('<li>').text(msg));
-            });
-            */
+              var accountActive = '{{accountname}}';
+              try {
+                if (!(accountActive[0] == '{' && accountActive[1] == '{' && accountActive[2] != '{'))
+                  user=accountActive;
+              } catch (error) {
+                console.log("Failed to change username.");
+              }
 
-          // var socket = io();
-          // socket.connect('http://localhost:3000');
-
-            $('form').submit(function(){
               socket.emit('chat message', user +" : "+$('#m').val());
               $('#m').val('');
               return false;
-              });
+            });
 
             socket.on('anonymous name', function(msg){ // For users who do not want to make an account
               user = "Anonymous" + msg;
@@ -107,7 +97,6 @@
   <body>
     <div class="header">
       <a href="/"><h1>Chat Client</h1></a>
-
     </div>
     <ul id="clientCount"></ul>
     <ul id="messages"></ul>
