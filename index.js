@@ -39,6 +39,7 @@ app.post('/database', function(req, res) {
   MongoClient.connect(url, function(err, db) {
     var dbo = db.db("chatclient");
     var query = { user: req.body.user };
+
     dbo.collection("accounts").find(query).toArray(function(err, result) {
       if (err) throw err;
       if (result == null || result == "") {
@@ -68,17 +69,16 @@ app.post('/database', function(req, res) {
 });
 
 app.post('/signup', function(req, res) {
-  // var url = "mongodb://default:chatpassword123@ds127129.mlab.com:27129/chatclient";
-
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("chatclient");
   
-    var query = { user: req.body.user };
+    var query = { user: req.body.username };
+    console.log(req.body.username);
     dbo.collection("accounts").find(query).toArray(function(err, result) {
       if (err) throw err;
-      if (!(result == null && result == "")) {
-        console.log("account already exists: fail");
+      if (!(result == null || result == "")) {
+        console.log("Account already exists.");
       } else {
         var myobj = { user: req.body.username, pass: req.body.password };
         dbo.collection("accounts").insertOne(myobj, function(err, res) 
@@ -89,6 +89,14 @@ app.post('/signup', function(req, res) {
         });
       }
       db.close();
+    });
+    var success = {
+      message: "Sign up was successful."
+    };
+    fs.readFile(__dirname + '/index.html', 'utf8', (err, data) => {
+      if (err) throw err;
+      var html = mustache.to_html(data, success);
+      res.send(html);
     });
   });
 });
