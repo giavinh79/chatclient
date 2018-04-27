@@ -16,6 +16,17 @@
           <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
           <script type="text/javascript">
+            $(document).ready(function() { // Preloader for website
+              $(window).on("load", function() {
+                preloaderFadeOutTime = 800;
+                function hidePreloader() {
+                  var preloader = $('.preloader-wrapper');
+                  preloader.delay(500).fadeOut(preloaderFadeOutTime);
+                }
+                hidePreloader();
+              });
+            });
+
             function validateForm()
             {
               return true;
@@ -51,19 +62,22 @@
         </head>
         
         <body>
+          <div class="preloader-wrapper">
+          </div>
+
           <div class="header">
-              <a href="index.html"><h1><span class="infernotext"> Chat </span> Client</h1></a>
-              <form class="form-inline" style="padding-top: 1em;" action="database" method="post">
-                <div class="form-group">
-                  <label for="user">Username:</label>
-                  <input type="text" class="form-control" id="user" name="user" required>
-                </div>
-                <div class="form-group">
-                  <label for="pwd">Password:</label>
-                  <input type="password" class="form-control" id="pwd" name="pwd" required>
-                </div>
-                <button type="submit" class="btn btn-default">Login</button>
-              </form>
+            <a href="index.html"><h1><span class="infernotext"> Chat </span> Client</h1></a>
+            <form class="form-inline" style="padding-top: 1em;" action="database" method="post">
+              <div class="form-group">
+                <label for="user">Username:</label>
+                <input type="text" class="form-control" id="user" name="user" required>
+              </div>
+              <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="pwd" name="pwd" required>
+              </div>
+              <button type="submit" class="btn btn-default">Login</button>
+            </form>
           </div>
 
           <div id="warning" class="alert alert-warning" style="position: absolute; width: 100%; bottom: 20; z-index: 100; display: none;">

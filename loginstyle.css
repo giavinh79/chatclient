@@ -54,7 +54,7 @@ form button:hover {
     cursor: pointer;
 }
 
-#messages { 
+#messages {
     list-style-type: none; margin: 0; padding: 0; 
 }
 
