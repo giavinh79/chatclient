@@ -26,6 +26,9 @@ app
   .get('/loginstyle.css', function(req, res) {
     res.sendFile(__dirname + "/loginstyle.css");
   })
+  .get('/loadingPhilCoffman.gif', function(req, res) {
+    res.sendFile(__dirname + "/loadingPhilCoffman.gif");
+  })
   .get('/favicon.ico', function(req, res) {
     res.sendFile(__dirname + "/favicon.ico");
   });
