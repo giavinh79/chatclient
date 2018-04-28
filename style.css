@@ -16,8 +16,9 @@ body {
   bottom: 0;
   background-color: white;
   background-image: url('loadingPhilCoffman.gif');
-  background-size: cover;
-  background-position: 40% 40%;
+  /* background-size: 1300px 900px; */
+  background-size: 80% 120%;
+  background-position: 50% 40%;
   z-index: 100;
 }
 
@@ -223,9 +224,9 @@ h2 {
   }
 }
 
-@media only screen and (min-width: 1600px)
+@media only screen and (min-width: 1800px) and (min-height: 700px)
 {
   .preloader-wrapper {
-    background-size: 1500 500;
+    background-size: 1300px 900px;
   }
 }
