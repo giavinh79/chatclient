@@ -187,6 +187,10 @@ h2 {
   .menu, .menuReal {
     margin-top: -80px;
   }
+  
+  .preloader-wrapper {
+    background-size: cover;
+  }
 }
 
 @media only screen and (max-height: 500px) {
