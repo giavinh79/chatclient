@@ -58,6 +58,17 @@
                 return false;
               }
             }
+
+            function errorMessage()
+            {
+              if ('{{message}}'.charAt(0) != '{')
+              {
+                var errorMessage = document.getElementById("errorMsg");
+                errorMessage.innerHTML = "<bold>{{message}}</body> Please try again.";
+                $("#errorMsg").delay(1200).show(0);
+                $("#errorMsg").delay(1200).fadeOut(1500);
+              }
+            }
           </script>
         </head>
         
@@ -82,6 +93,10 @@
 
           <div id="warning" class="alert alert-warning" style="position: absolute; width: 100%; bottom: 20; z-index: 100; display: none;">
             <strong>Passwords do not match!</strong> Please try again.
+          </div>
+
+          <div id="errorMsg" class="alert alert-warning" style="position: absolute; width: 100%; bottom: 20; z-index: 100; display: none;">
+              <strong>Incorrect credentials!</strong> Please try again.
           </div>
 
           <h2>Sign Up</h2>
@@ -113,5 +128,7 @@
           <div class="footer">
             <p>&copy 2018 Giavinh Lam</p>
           </div>
+
+          <script>$(document).ready(errorMessage());</script>
         </body>
         </HTML>

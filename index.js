@@ -1,9 +1,9 @@
 const app = require('express')(); //dependencies and modules
 const http = require('http').Server(app);
 const io = require('socket.io')(http, { wsEngine: 'ws' });
-var fs = require('fs'); // bring in the file system api
-var mustache = require('mustache');
-var MongoClient = require('mongodb').MongoClient;
+const fs = require('fs'); // bring in the file system api
+const mustache = require('mustache'); //{{}}
+const MongoClient = require('mongodb').MongoClient;
 var clientCount = 0;
 
 const PORT = process.env.PORT || 8080;
@@ -42,13 +42,20 @@ app.post('/database', function(req, res) {
   MongoClient.connect(url, function(err, db) {
     var dbo = db.db("chatclient");
     var query = { user: req.body.user };
-
+    console.log("Attempting login...");
     dbo.collection("accounts").find(query).toArray(function(err, result) {
       if (err) throw err;
       if (result == null || result == "") {
-        console.log("none found");
+        console.log("Incorrect credentials");
+        var fail = {
+          message: "Incorrect credentials!"
+        };
+        fs.readFile(__dirname + '/index.html', 'utf8', (err, data) => {
+          if (err) throw err;
+          var html = mustache.to_html(data, fail);
+          res.send(html);
+        });
       } else {
-        console.log(result);
         if (result[0].pass == req.body.pwd) {
           console.log("Successful login");
 
@@ -63,7 +70,15 @@ app.post('/database', function(req, res) {
           });
 
         } else {
-          console.log("Failed login");
+          console.log("Incorrect credentials");
+          var fail = {
+            message: "Incorrect credentials!"
+          };
+          fs.readFile(__dirname + '/index.html', 'utf8', (err, data) => {
+            if (err) throw err;
+            var html = mustache.to_html(data, fail);
+            res.send(html);
+          });
         }
       }
       db.close();
@@ -77,29 +92,35 @@ app.post('/signup', function(req, res) {
     var dbo = db.db("chatclient");
   
     var query = { user: req.body.username };
-    console.log(req.body.username);
     dbo.collection("accounts").find(query).toArray(function(err, result) {
       if (err) throw err;
       if (!(result == null || result == "")) {
-        console.log("Account already exists.");
+        var fails = {
+          message: "Account already exists!"
+        };
+        fs.readFile(__dirname + '/index.html', 'utf8', (err, data) => {
+          if (err) throw err;
+          var html = mustache.to_html(data, fails);
+          db.close();
+          res.send(html);
+        });
       } else {
         var myobj = { user: req.body.username, pass: req.body.password };
         dbo.collection("accounts").insertOne(myobj, function(err, res) 
         {
           if (err) throw err;
           console.log("1 document inserted.");
+        });
+        var success = {
+          message: "Sign up was successful."
+        };
+        fs.readFile(__dirname + '/index.html', 'utf8', (err, data) => {
+          if (err) throw err;
+          var html = mustache.to_html(data, success);
           db.close();
+          res.send(html);
         });
       }
-      db.close();
-    });
-    var success = {
-      message: "Sign up was successful."
-    };
-    fs.readFile(__dirname + '/index.html', 'utf8', (err, data) => {
-      if (err) throw err;
-      var html = mustache.to_html(data, success);
-      res.send(html);
     });
   });
 });
