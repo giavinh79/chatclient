@@ -105,7 +105,8 @@ app.post('/signup', function(req, res) {
           res.send(html);
         });
       } else {
-        var myobj = { user: req.body.username, pass: req.body.password };
+        var dateStamp = new Date();
+        var myobj = { user: req.body.username, pass: req.body.password, date: dateStamp};
         dbo.collection("accounts").insertOne(myobj, function(err, res) 
         {
           if (err) throw err;

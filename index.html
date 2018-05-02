@@ -64,7 +64,11 @@
               if ('{{message}}'.charAt(0) != '{')
               {
                 var errorMessage = document.getElementById("errorMsg");
-                errorMessage.innerHTML = "<bold>{{message}}</body> Please try again.";
+                errorMessage.innerHTML = "<bold>{{message}}</bold>";
+                if (errorMessage.innerHTML.charAt(6) != 'S')
+                {
+                  errorMessage.innerHTML += " Please try again.";
+                }
                 $("#errorMsg").delay(1200).show(0);
                 $("#errorMsg").delay(1200).fadeOut(1500);
               }
